@@ -22,7 +22,7 @@ class ForgotPasswordScreen extends StatelessWidget {
               
               textAlign: TextAlign.center,
             ),
-            const SizedBox(
+            SizedBox(
               height: TSizes.spaceBtwItems,
             ),
 

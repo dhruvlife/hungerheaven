@@ -15,7 +15,7 @@ class TSocialicon extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             border:
-                Border.all(color: Color.fromARGB(255, 200, 200, 255)),
+                Border.all(color: const Color.fromARGB(255, 200, 200, 255)),
             borderRadius: BorderRadius.circular(150),
           ),
           child: IconButton(
@@ -32,7 +32,7 @@ class TSocialicon extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             border:
-                Border.all(color: Color.fromARGB(255, 200, 200, 255)),
+                Border.all(color: const Color.fromARGB(255, 200, 200, 255)),
             borderRadius: BorderRadius.circular(150),
           ),
           child: IconButton(

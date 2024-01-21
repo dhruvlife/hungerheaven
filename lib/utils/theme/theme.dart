@@ -29,7 +29,7 @@ class TAppTheme {
     useMaterial3: true,
     brightness: Brightness.dark,
     primaryColor: Colors.blue,
-    scaffoldBackgroundColor: Color.fromARGB(60, 70, 70, 70),
+    scaffoldBackgroundColor: const Color.fromARGB(60, 70, 70, 70),
     textTheme: TTextTheme.lightTextTheme,
     elevatedButtonTheme: TElevatedButtonTheme.darkElevatedButtonTheme,
     appBarTheme: TAppBarTheme.darkAppBarTheme,

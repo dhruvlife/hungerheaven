@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_utils/get_utils.dart';
 import 'package:vision/utils/constants/colors.dart';
-import 'package:vision/utils/constants/text_strings.dart';
 import 'package:vision/utils/helpers/helper_functions.dart';
 
 class TFormDivider extends StatelessWidget {
@@ -24,7 +22,7 @@ class TFormDivider extends StatelessWidget {
           child: Divider(
             color: dark
                 ? TColors.darkGrey
-                : Color.fromARGB(255, 90, 90, 90),
+                : const Color.fromARGB(255, 90, 90, 90),
             thickness: 0.5,
             indent: 30,
             endIndent: 30,
@@ -38,7 +36,7 @@ class TFormDivider extends StatelessWidget {
           child: Divider(
             color: dark
                 ? TColors.darkGrey
-                : Color.fromARGB(255, 90, 90, 90),
+                : const Color.fromARGB(255, 90, 90, 90),
             thickness: 0.5,
             indent: 30,
             endIndent: 30,
