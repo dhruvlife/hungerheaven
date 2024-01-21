@@ -22,6 +22,12 @@ class TTexts {
 
 
   // -- Authentication Forms
+  static const String foodname = "Food Name";
+  static const String foodq = "Food quantity ";
+  static const String foodcata = "Food Category";
+  static const String addfood = "Add Food";
+  static const String foodtype = "Food Type";
+
   static const String firstName = "First Name";
   static const String lastName = "Last Name";
   static const String fullName = "Full Name";

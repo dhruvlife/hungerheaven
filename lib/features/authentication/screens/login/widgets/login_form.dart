@@ -7,6 +7,8 @@ import 'package:get_storage/get_storage.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:vision/features/authentication/screens/homescreen/widgets/home_screen_form.dart';
+import 'package:vision/features/authentication/screens/login/login.dart';
+import 'package:vision/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:vision/features/authentication/screens/signup/signup.dart';
 import 'package:vision/utils/constants/sizes.dart';
 import 'package:vision/utils/constants/text_strings.dart';
@@ -37,6 +39,7 @@ class TLoginForm extends StatelessWidget {
 
         if (userQuery.docs.isNotEmpty) {
           final user = userQuery.docs.first.data();
+          sharedPref.write(onBoardingScreenState.KEYLOGIN, true);
           sharedPref.write("name", user["fullname"]);
           sharedPref.write("email", user["email"]);
           sharedPref.write("phone", user["phone_no"]);
