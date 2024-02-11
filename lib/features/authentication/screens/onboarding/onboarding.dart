@@ -8,6 +8,7 @@ import 'package:vision/features/authentication/controllers/onboarding/widgets/on
 import 'package:vision/features/authentication/controllers/onboarding/widgets/onboarding_skip.dart';
 import 'package:vision/features/authentication/screens/homescreen/widgets/home_screen_form.dart';
 import 'package:vision/features/authentication/screens/login/login.dart';
+import 'package:vision/navigation_menu.dart';
 import 'package:vision/utils/constants/image_strings.dart';
 import 'package:vision/utils/constants/text_strings.dart';
 import 'dart:async';
@@ -20,6 +21,7 @@ class onBoardingScreen extends StatefulWidget {
 }
 
 class onBoardingScreenState extends State<onBoardingScreen> {
+
   static const String KEYLOGIN = "login";
   @override
   void initState() {
@@ -63,20 +65,25 @@ class onBoardingScreenState extends State<onBoardingScreen> {
     );
   }
 
-  void whereToGo() async {
-    var sharedPref = GetStorage();
-    bool isLogin = sharedPref.read("KEYLOGIN");
+  
 
-    Timer(const Duration(seconds: 3), () {
-      if (isLogin != null) {
-        if (isLogin == true) {
-          Get.to(() => HomeScreen());
-        } else {
-          Get.to(() => LoginScreen());
-        }
+  void whereToGo() async {
+  var sharedPref = GetStorage();
+  await sharedPref.initStorage; // Initialize GetStorage
+  var isLogin = sharedPref.read(KEYLOGIN);
+
+  // Timer(const Duration(seconds: 3), () {
+    if (isLogin != null) {
+      if (isLogin == true) {
+        Get.to(() => NavigationMenu());
       } else {
         Get.to(() => LoginScreen());
       }
-    });
-  }
+    } 
+    // else {
+    //   Get.to(() => LoginScreen());
+    // }
+  // });
+}
+
 }

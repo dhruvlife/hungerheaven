@@ -74,6 +74,7 @@ class TSignUpForm extends StatelessWidget {
           sharedPref.write("signup_email", emailAddress.text.trim());
           sharedPref.write("signup_phone", phoneNo.text.trim());
           sharedPref.write("signup_password", password.text.trim());
+          
           Get.to(() => const VerifyEmailScreen());
         }
 

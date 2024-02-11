@@ -27,12 +27,13 @@ class VerifyEmailScreenState extends State<VerifyEmailScreen> {
   int randomCode = 0;
   bool isOtpVerified = false;
   bool isLoading = false;
+  var user = <String, dynamic>{};
 
   @override
   void initState() {
     super.initState();
     final sharedPref = GetStorage();
-    final user = <String, dynamic>{
+    user = {
       "fullname": sharedPref.read("signup_name").toString(),
       "email": sharedPref.read("signup_email").toString(),
       "phone": sharedPref.read("signup_phone").toString(),
@@ -104,22 +105,22 @@ class VerifyEmailScreenState extends State<VerifyEmailScreen> {
 
   void _signup() async {
     FirebaseFirestore db = FirebaseFirestore.instance;
-    final sharedPref = GetStorage();
-    final user = <String, dynamic>{
-      "fullname": sharedPref.read("signup_name").toString(),
-      "email": sharedPref.read("signup_email").toString(),
-      "phone": sharedPref.read("signup_phone").toString(),
-      "password": sharedPref.read("signup_password").toString(),
-    };
+    // final sharedPref = GetStorage();
+    // final user = <String, dynamic>{
+    //   "fullname": sharedPref.read("signup_name").toString(),
+    //   "email": sharedPref.read("signup_email").toString(),
+    //   "phone": sharedPref.read("signup_phone").toString(),
+    //   "password": sharedPref.read("signup_password").toString(),
+    // };
 
     // Add a new document with a generated ID
     final credential =
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
-      email: sharedPref.read("signup_email").toString(),
-      password: sharedPref.read("signup_password").toString(),
+      email: user["email"],
+      password: user["password"]
     );
     DocumentReference doc = await db.collection("users").add(user);
-    debugPrint("Document id : ${doc.id}");
+    debugPrint("Verify Email Document id : ${doc.id}");
     Fluttertoast.showToast(msg: "Signup Success");
     Future.delayed(const Duration(seconds: 2));
     Get.to(() => const LoginScreen());
