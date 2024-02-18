@@ -1,4 +1,4 @@
-package com.example.hungerheaven
+package com.hungerheaven.restaurant
 
 import io.flutter.embedding.android.FlutterActivity
 

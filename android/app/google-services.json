@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:79506262265:android:bef1d762b2c2f2e0ac7a28",
         "android_client_info": {
-          "package_name": "com.example.hungerheaven"
+          "package_name": "com.hungerheaven.restaurant"
         }
       },
       "oauth_client": [
@@ -34,7 +34,7 @@
               "client_id": "79506262265-fdlqk4d2k5p0jn3fq3ot70mo86j1u83i.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.hungerheaven.RunnerTests"
+                "bundle_id": "com.hungerheaven.restaurant.RunnerTests"
               }
             }
           ]

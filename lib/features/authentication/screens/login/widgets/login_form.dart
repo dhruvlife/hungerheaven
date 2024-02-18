@@ -10,13 +10,11 @@ import 'package:get/utils.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:vision/common/widgets/login_signup/form_divider.dart';
-import 'package:vision/common/widgets/login_signup/social_icon.dart';
-import 'package:vision/features/authentication/screens/homescreen/widgets/home_screen_form.dart';
-import 'package:vision/features/authentication/screens/login/login.dart';
-import 'package:vision/features/authentication/screens/onboarding/onboarding.dart';
+import 'package:vision/features/authentication/screens/rest_rt.dart/login_rest.dart';
+
 import 'package:vision/features/authentication/screens/signup/signup.dart';
 import 'package:vision/navigation_menu.dart';
+import 'package:vision/splash_screen.dart';
 import 'package:vision/utils/constants/sizes.dart';
 import 'package:vision/utils/constants/text_strings.dart';
 
@@ -50,7 +48,7 @@ class TLoginForm extends StatelessWidget {
           final user = userQuery.docs.first.data();
           final userId = userQuery.docs.first.id; // Fetching the document ID
           sharedPref.write('isLogin', true);
-          sharedPref.write(onBoardingScreenState.KEYLOGIN, true);
+          sharedPref.write(SplashScreenState.KEYLOGIN, true);
           sharedPref.write("userId", userId);
           sharedPref.write("name", user["fullname"]);
           sharedPref.write("email", user["email"]);
@@ -59,7 +57,7 @@ class TLoginForm extends StatelessWidget {
           Fluttertoast.showToast(msg: "Login Success");
           Future.delayed(const Duration(seconds: 2));
           sharedPref.save();
-          Get.to(() => const NavigationMenu());
+          Get.to(() => const RestLogin());
           // Navigate to the desired screen or perform any other action with user details
         } else {
           debugPrint("User not found in Firestore");
@@ -133,7 +131,27 @@ class TLoginForm extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: TSizes.spaceBtwItems),
-              Obx(() => SizedBox(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Do you have not any acount ?',
+                    style: TextStyle(fontSize: 14),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SignupScreen()));
+                    },
+                    child: Text('Sign Up here..'),
+                  ),
+                ],
+              ),
+              const SizedBox(height: TSizes.spaceBtwItems),
+              Obx(
+                () => SizedBox(
                   width: double.infinity,
                   // child: ElevatedButton(
                   //   onPressed: () => _signIn(),
@@ -147,9 +165,8 @@ class TLoginForm extends StatelessWidget {
                           },
                     child: const Text('Submit'),
                   ),
-                ),),
-              
-              
+                ),
+              ),
               const SizedBox(height: TSizes.spaceBtwSections),
               if (isLoading.isTrue) const CircularProgressIndicator()
             ],

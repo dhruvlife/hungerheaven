@@ -23,23 +23,22 @@ class Profile extends StatelessWidget {
     userId = sharedPref.read("userId") ?? '12345678901234567890';
 
     Future<void> updateUserData(
-      String userId, Map<String, dynamic> updatedData) async {
-    try {
-      await FirebaseFirestore.instance
-          .collection("users")
-          .doc(userId)
-          .update(updatedData);
-      sharedPref.write("name", name.text);
-      sharedPref.write("email", email.text);
-      sharedPref.write("phone", phone.text);
-      Fluttertoast.showToast(msg: "Details Updated SuccessFully");
-    } catch (e) {
-      Fluttertoast.showToast(msg: "Error while updating your details");
-      print("Error updating user data: $e");
-      // Handle the error accordingly
+        String userId, Map<String, dynamic> updatedData) async {
+      try {
+        await FirebaseFirestore.instance
+            .collection("users")
+            .doc(userId)
+            .update(updatedData);
+        sharedPref.write("name", name.text);
+        sharedPref.write("email", email.text);
+        sharedPref.write("phone", phone.text);
+        Fluttertoast.showToast(msg: "Details Updated SuccessFully");
+      } catch (e) {
+        Fluttertoast.showToast(msg: "Error while updating your details");
+        print("Error updating user data: $e");
+        // Handle the error accordingly
+      }
     }
-  }
-
 
     void updateUserInfo(String userId) {
       // Define the updated data
@@ -53,7 +52,6 @@ class Profile extends StatelessWidget {
       // Call the function to update the user data
       updateUserData(userId, updatedData);
     }
-    
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -67,8 +65,13 @@ class Profile extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(
-                  height: TSizes.spaceBtwSections * 2.5,
+                  height: TSizes.spaceBtwSections*2 ,
                 ),
+                Text(
+                  'My Profile',
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+                const SizedBox(height: TSizes.spaceBtwSections),
                 TextFormField(
                   //validator: _validateEmail,
                   controller: name,
@@ -101,13 +104,13 @@ class Profile extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: TSizes.spaceBtwSections * 2,
+                  height: TSizes.spaceBtwSections ,
                 ),
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                     updateUserInfo(userId);
+                      updateUserInfo(userId);
                     },
                     child: const Text('Update Profile'),
                   ),
@@ -122,8 +125,6 @@ class Profile extends StatelessWidget {
       ),
     );
   }
-
-  
 
 // Usage
 }

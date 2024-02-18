@@ -45,6 +45,7 @@ dependencies:
   flutter_native_splash: ^2.3.1
   smooth_page_indicator: 
   fluttertoast:
+  
 
 #upload
   camera:
@@ -52,9 +53,9 @@ dependencies:
   mime:
 
 #geolocation
-  geolocator: ^10.1.0
+  
   geocoding: ^2.1.1
-
+  geolocator: ^11.0.0
 
 
   # Icons
@@ -70,7 +71,6 @@ dependencies:
   carousel_slider: ^4.2.1
   flutter_rating_bar: ^4.0.1
   capped_progress_indicator: ^0.0.2
-  shared_preferences: ^2.2.2
 
 dev_dependencies:
   flutter_lints: ^3.0.0

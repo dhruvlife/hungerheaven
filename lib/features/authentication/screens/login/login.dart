@@ -34,6 +34,8 @@ class LoginScreen extends StatelessWidget {
               ),
 
               const TSocialicon(),
+
+              
             ],
           ),
         ),

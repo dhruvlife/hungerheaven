@@ -67,7 +67,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '79506262265',
     projectId: 'hungerhaven-27983',
     storageBucket: 'hungerhaven-27983.appspot.com',
-    iosBundleId: 'com.example.hungerheaven',
+    iosBundleId: 'com.hungerheaven.restaurant',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
@@ -76,6 +76,6 @@ class DefaultFirebaseOptions {
     messagingSenderId: '79506262265',
     projectId: 'hungerhaven-27983',
     storageBucket: 'hungerhaven-27983.appspot.com',
-    iosBundleId: 'com.example.hungerheaven.RunnerTests',
+    iosBundleId: 'com.hungerheaven.restaurant.RunnerTests',
   );
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:vision/features/authentication/screens/onboarding/onboarding.dart';
+import 'package:vision/splash_screen.dart';
 import 'package:vision/utils/constants/text_strings.dart';
 import 'package:vision/utils/theme/theme.dart';
 
@@ -16,7 +16,7 @@ class App extends StatelessWidget {
       darkTheme: TAppTheme.darkTheme,
       debugShowCheckedModeBanner: false,
       // initialBinding: GeneralBindings(),
-      home:  onBoardingScreen(),
+      home:  SplashScreen(),
     );
   }
 }

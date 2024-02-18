@@ -48,7 +48,7 @@ class NavigationController extends GetxController{
   final Rx<int> selectedIndex = 0.obs;
 
   // ignore: non_constant_identifier_names
-  final Screens = [const HomeScreen(),const Addfood(),const delivery(),const Profile(),];
+  final Screens = [const HomeScreen(),const Addfood(), Delivery(),const Profile(),];
 }
 
 
