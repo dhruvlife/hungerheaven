@@ -52,7 +52,7 @@ class TTexts {
 
 
   // -- Authentication Headings
-  static const String loginTitle = "Welcome back in Hunger Heaven";
+  static const String loginTitle = "Welcome back to Hunger Heaven";
   static const String loginSubTitle = "Discover Limitless Choices and Unmatched Convenience.";
   static const String signupTitle = "Let’s create your account";
   static const String forgetPasswordTitle = "Forget password";

@@ -7,12 +7,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:vision/features/authentication/controllers/onboarding/onboarding_controller.dart';
-import 'package:vision/features/authentication/screens/homescreen/widgets/home_screen_form.dart';
 import 'package:vision/features/authentication/screens/login/login.dart';
 import 'package:vision/features/authentication/screens/onboarding/onboarding.dart';
+import 'package:vision/features/authentication/screens/rest_rt/signup_rest.dart';
 import 'package:vision/navigation_menu.dart';
-
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -25,10 +23,8 @@ class SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
-  static const String isShopApproved = "approve";
-  static const String isShopAdded = "added";
-  // ignore: constant_identifier_names
-  static const String KEYLOGIN = "login";
+  static const String isRestaurantAdded = "added";
+  static const String keylogin = "login";
 
   @override
   void initState() {
@@ -56,17 +52,11 @@ class SplashScreenState extends State<SplashScreen>
             FadeTransition(
               opacity: _animation,
               child: Image.asset(
-                'assets/logos/t2.png',
+                'assets/logos/hh.png',
                 height: 380, // Increased height by 20%
                 width: 380,
               ),
             ),
-            FadeTransition(
-                opacity: _animation,
-                child: const Text(
-                  "PARTNER",
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w900),
-                )),
           ],
         ),
       ),
@@ -82,22 +72,26 @@ class SplashScreenState extends State<SplashScreen>
   void whereToGo() async {
     var sharedPref = GetStorage();
     await sharedPref.initStorage;
-    var isLogin = sharedPref.read(KEYLOGIN);
+    var isLogin = sharedPref.read(keylogin);
+    var restaurantAdded = sharedPref.read(isRestaurantAdded) ?? false;
 
     debugPrint("""Let's print the bool values\n
-    1) Is login: $isLogin\n""");
+    1) Is login: $isLogin\n
+    2) Restaurant Added: $restaurantAdded""");
 
     Timer(
       const Duration(seconds: 3),
       () {
         if (isLogin != null) {
-          if (isLogin) {
-            Get.to(NavigationMenu());
+          if (isLogin && restaurantAdded) {
+            Get.offAll(() =>const NavigationMenu());
+          } else if (isLogin && !restaurantAdded) {
+            Get.offAll(() => const RestSignUp());
           } else {
-            Get.to(LoginScreen()); // Replace with your actual file path;
+            Get.to(() => const LoginScreen());
           }
         } else {
-          Get.to(onBoardingScreen());
+          Get.offAll(() => const onBoardingScreen());
         }
       },
     );

@@ -10,23 +10,21 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var sharedPref = GetStorage();
-
     TextEditingController name = TextEditingController();
     TextEditingController email = TextEditingController();
     TextEditingController phone = TextEditingController();
     String userId = "";
-
+    var sharedPref = GetStorage();
+    sharedPref.initStorage;
     name.text = sharedPref.read("name") ?? 'Hunger Heaven';
     email.text = sharedPref.read("email") ?? 'hunger.heaven@gmail.com';
     phone.text = sharedPref.read("phone") ?? '1234567890';
     userId = sharedPref.read("userId") ?? '12345678901234567890';
-
     Future<void> updateUserData(
         String userId, Map<String, dynamic> updatedData) async {
       try {
         await FirebaseFirestore.instance
-            .collection("users")
+            .collection("rest_owners")
             .doc(userId)
             .update(updatedData);
         sharedPref.write("name", name.text);
@@ -35,7 +33,7 @@ class Profile extends StatelessWidget {
         Fluttertoast.showToast(msg: "Details Updated SuccessFully");
       } catch (e) {
         Fluttertoast.showToast(msg: "Error while updating your details");
-        print("Error updating user data: $e");
+        debugPrint("Error updating user data: $e");
         // Handle the error accordingly
       }
     }
@@ -65,7 +63,7 @@ class Profile extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(
-                  height: TSizes.spaceBtwSections*2 ,
+                  height: TSizes.spaceBtwSections * 2,
                 ),
                 Text(
                   'My Profile',
@@ -104,7 +102,7 @@ class Profile extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: TSizes.spaceBtwSections ,
+                  height: TSizes.spaceBtwSections,
                 ),
                 SizedBox(
                   width: double.infinity,
@@ -125,6 +123,4 @@ class Profile extends StatelessWidget {
       ),
     );
   }
-
-// Usage
 }

@@ -306,11 +306,13 @@ import 'package:vision/utils/constants/sizes.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Delivery extends StatefulWidget {
+  const Delivery({super.key});
+
   @override
-  _DeliveryState createState() => _DeliveryState();
+  DeliveryState createState() => DeliveryState();
 }
 
-class _DeliveryState extends State<Delivery> {
+class DeliveryState extends State<Delivery> {
   late TextEditingController _latitudeController;
   late TextEditingController _longitudeController;
 
@@ -361,7 +363,7 @@ class _DeliveryState extends State<Delivery> {
       isLocationStored(false); // Reset location stored status
       isLocationStored(true); // Show location stored status
     } catch (e) {
-      print('Error getting location: $e');
+      debugPrint('Error getting location: $e');
     } finally {
       isLoading(false);
     }
@@ -369,7 +371,7 @@ class _DeliveryState extends State<Delivery> {
 
   Future<void> _storeLocationInFirebase(double latitude, double longitude) async {
     try {
-      final userId = ''; // Fetch user ID after authentication
+      const userId = ''; // Fetch user ID after authentication
       if (userId.isNotEmpty) {
         final userLocationRef = FirebaseFirestore.instance.collection('userLocations').doc(userId);
 
@@ -381,13 +383,13 @@ class _DeliveryState extends State<Delivery> {
         throw 'User ID is empty.';
       }
     } catch (e) {
-      print('Error storing location: $e');
+      debugPrint('Error storing location: $e');
     }
   }
 
   Future<void> _getLocationFromFirebase() async {
     try {
-      final userId = ''; // Fetch user ID after authentication
+      const userId = ''; // Fetch user ID after authentication
       if (userId.isNotEmpty) {
         final userLocationRef = FirebaseFirestore.instance.collection('userLocations').doc(userId);
 
@@ -402,7 +404,7 @@ class _DeliveryState extends State<Delivery> {
         throw 'User ID is empty.';
       }
     } catch (e) {
-      print('Error retrieving location: $e');
+      debugPrint('Error retrieving location: $e');
     }
   }
 
@@ -456,7 +458,7 @@ class _DeliveryState extends State<Delivery> {
                   child: OutlinedButton(
                     onPressed: isLoading.value ? null : _getCurrentLocation,
                     child: isLoading.value
-                        ? CircularProgressIndicator()
+                        ? const CircularProgressIndicator()
                         : const Text('Current Location'),
                   ),
                 );
@@ -473,7 +475,7 @@ class _DeliveryState extends State<Delivery> {
               ),
               Obx(() {
                 return isLocationStored.value
-                    ? Text('Location stored in Firebase!')
+                    ? const Text('Location stored in Firebase!')
                     : Container();
               }),
             ],
