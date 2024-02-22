@@ -26,7 +26,7 @@ jobs:
       run: flutter build apk
 
     - name: Build for iOS
-      run: flutter build ios --no-codesign
+      run: flutter build ios
 
     - name: Archive artifacts
       uses: actions/upload-artifact@v2
