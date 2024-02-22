@@ -88,7 +88,10 @@ class TLoginForm extends StatelessWidget {
                               );
                             }
                           },
-                    child: const Text('Submit'),
+                    style: OutlinedButton.styleFrom(
+                        backgroundColor: Colors.green,
+                        side: BorderSide(color: Colors.amber)),
+                    child: const Text('Submit',style: TextStyle(color: Colors.white),),
                   ),
                 ),
               ),
@@ -156,7 +159,7 @@ class TSignInController extends GetxController {
             SplashScreenState.isRestaurantAdded, user["isRestaurantAdded"]);
         Fluttertoast.showToast(msg: "Login Success");
         await sharedPref.save();
-        if (sharedPref.read("restaurantAdded") == true||
+        if (sharedPref.read("restaurantAdded") == true ||
             sharedPref.read(SplashScreenState.isRestaurantAdded) == true) {
           Get.offAll(() => const NavigationMenu());
         } else {

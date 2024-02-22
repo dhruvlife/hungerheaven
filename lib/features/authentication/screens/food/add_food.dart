@@ -144,24 +144,32 @@ class AddfoodState extends State<Addfood> {
                   ),
                 ),
                 const SizedBox(
-                  height: 16,
+                  height: 22,
                 ),
                 const Text(
-                  'Upload food image...',
+                  'Upload Food Image...',style: TextStyle(fontSize: 20),
                 ),
                 const SizedBox(
-                  height: 16,
+                  height: 22,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                      backgroundColor:  Colors.cyan,
+                      side: BorderSide(color: Colors.deepPurple)
+                      ),
                       onPressed: _takePicture,
                       child: const Text('Take Picture'),
                     ),
                     const SizedBox(width: 16),
                     OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                      backgroundColor: Colors.deepPurple,
+                      side: BorderSide(color: Colors.cyan)
+                      ),
                       onPressed: _selectPicture,
                       child: const Text('Select Picture'),
                     ),
@@ -180,6 +188,10 @@ class AddfoodState extends State<Addfood> {
                   return SizedBox(
                     width: double.infinity,
                     child: OutlinedButton(
+                       style: OutlinedButton.styleFrom(
+                      backgroundColor: Color.fromARGB(255, 0, 149, 5),
+                      side: BorderSide(color: Colors.amber)
+                      ),
                       onPressed: isProcessing.value ? null : uploadPicture,
                       child: isProcessing.value
                           ? const CircularProgressIndicator()

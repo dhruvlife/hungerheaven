@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
@@ -21,13 +23,13 @@ class LogoutScreen extends StatelessWidget {
                 children: [
                   Image.asset(
                     'assets/logos/logout.gif',
-                    width: 100,
-                    height: 100,
+                    width: 300,
+                    height: 300,
                   ),
                   const SizedBox(height: 20),
                   const Text(
-                    'Logging you out...',
-                    style: TextStyle(fontSize: 18),
+                    'Logging Out...',
+                    style: TextStyle(fontSize: 22),
                   ),
                 ],
               ),
@@ -42,10 +44,12 @@ class LogoutScreen extends StatelessWidget {
   }
 
   Future<void> clearAllData() async {
+    FirebaseAuth.instance.signOut();
     final storage = GetStorage();
     await storage.erase();
     Fluttertoast.showToast(msg: "Logout Successful!");
-    await Future.delayed(const Duration(seconds: 3)); // Wait for 2 seconds
+    await Future.delayed(const Duration(seconds: 4)); // Wait for 2 seconds
     Get.offAll(() => const LoginScreen());
   }
 }
+ 

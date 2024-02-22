@@ -81,6 +81,10 @@ class TSignUpForm extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
+                   style: OutlinedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                      side: BorderSide(color: Colors.amber)
+                      ),
                   onPressed: () async {
                     if (controller.isProcessing) return;
 

@@ -182,6 +182,10 @@ class VerifyEmailScreenState extends State<VerifyEmailScreen> {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
+                   style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                      side: BorderSide(color: Colors.amber)
+                      ),
                   onPressed: (isLoading && isOtpVerified)
                       ? null
                       : () async {

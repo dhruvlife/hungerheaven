@@ -1,8 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:vision/features/authentication/screens/login/login.dart';
+import 'package:vision/features/authentication/screens/logout/logout_screen.dart';
 import 'package:vision/utils/constants/sizes.dart';
 
 class Profile extends StatelessWidget {
@@ -38,6 +43,15 @@ class Profile extends StatelessWidget {
       }
     }
 
+    // Future<void> _signOut() async {
+    //   FirebaseAuth.instance.signOut();
+    //   var sharedPref = GetStorage();
+    //   await sharedPref.initStorage;
+    //   sharedPref.erase();
+    //   Fluttertoast.showToast(msg: "Logout Successfully!");
+    //   Get.offAll(() => LoginScreen());
+    // }
+
     void updateUserInfo(String userId) {
       // Define the updated data
       Map<String, dynamic> updatedData = {
@@ -51,72 +65,91 @@ class Profile extends StatelessWidget {
       updateUserData(userId, updatedData);
     }
 
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Form(
-        //key: loginFormKey,
-        autovalidateMode: AutovalidateMode.onUserInteraction,
-        child: Padding(
-          padding:
-              const EdgeInsets.symmetric(vertical: TSizes.spaceBtwSections / 2),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: TSizes.spaceBtwSections * 2,
-                ),
-                Text(
-                  'My Profile',
-                  style: Theme.of(context).textTheme.bodyMedium,
-                ),
-                const SizedBox(height: TSizes.spaceBtwSections),
-                TextFormField(
-                  //validator: _validateEmail,
-                  controller: name,
-                  decoration: const InputDecoration(
-                    prefixIcon: Icon(Iconsax.user),
-                    labelText: "Full Name",
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Profile"),
+        centerTitle: true,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Form(
+          //key: loginFormKey,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: TSizes.spaceBtwSections,
                   ),
-                ),
-                const SizedBox(
-                  height: TSizes.spaceBtwInputFields,
-                ),
-                TextFormField(
-                  //validator: _validateEmail,
-                  controller: email,
-                  decoration: const InputDecoration(
-                    prefixIcon: Icon(Icons.email_rounded),
-                    labelText: "Email",
+                  TextFormField(
+                    //validator: _validateEmail,
+                    controller: name,
+                    decoration: const InputDecoration(
+                      prefixIcon: Icon(Iconsax.user),
+                      labelText: "Full Name",
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  height: TSizes.spaceBtwInputFields,
-                ),
-                TextFormField(
-                  //validator: _validateEmail,
-                  // initialValue: ,
-                  controller: phone,
-                  decoration: const InputDecoration(
-                    prefixIcon: Icon(Icons.phone_android_rounded),
-                    labelText: 'Phone Number',
+                  const SizedBox(
+                    height: TSizes.spaceBtwInputFields,
                   ),
-                ),
-                const SizedBox(
-                  height: TSizes.spaceBtwSections,
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      updateUserInfo(userId);
-                    },
-                    child: const Text('Update Profile'),
+                  TextFormField(
+                    //validator: _validateEmail,
+                    controller: email,
+                    decoration: const InputDecoration(
+                      prefixIcon: Icon(Icons.email_rounded),
+                      labelText: "Email",
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  height: TSizes.spaceBtwSections / 2,
-                ),
-              ],
+                  const SizedBox(
+                    height: TSizes.spaceBtwInputFields,
+                  ),
+                  TextFormField(
+                    //validator: _validateEmail,
+                    // initialValue: ,
+                    controller: phone,
+                    decoration: const InputDecoration(
+                      prefixIcon: Icon(Icons.phone_android_rounded),
+                      labelText: 'Phone Number',
+                    ),
+                  ), 
+                  const SizedBox(
+                    height: TSizes.spaceBtwSections * 2,
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                       style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                      side: BorderSide(color: Colors.greenAccent)
+                      ),
+                      onPressed: () {
+                        updateUserInfo(userId);
+                      },
+                      child: const Text('Update Profile'),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    child: OutlinedButton(
+                      onPressed: () {
+                        Get.offAll(()=>LogoutScreen());
+                      },
+                     style: OutlinedButton.styleFrom(
+                      backgroundColor: Colors.redAccent,
+                      side: BorderSide(color: Colors.amber)
+                      ),
+                      child: Text(
+                        "Logout",
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

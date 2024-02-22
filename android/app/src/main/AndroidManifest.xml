@@ -9,7 +9,8 @@
     <application
         android:label="Hunger Heaven"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        android:hardwareAccelerated="true">
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -37,4 +38,6 @@
             android:name="flutterEmbedding"
             android:value="2" />
     </application>
+            <uses-feature android:name="android.hardware.camera" />
+        <uses-feature android:name="android.hardware.camera.autofocus" />
 </manifest>
