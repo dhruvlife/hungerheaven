@@ -85,8 +85,6 @@ class AddfoodState extends State<Addfood> {
           await storageReference.putFile(productPhoto!);
 
           String downloadURL = await storageReference.getDownloadURL();
-
-          Fluttertoast.showToast(msg: "Image Uploaded Successfully");
           addFoodController(
               foodname: foodName.text,
               foodCat: foodCat.text,
@@ -125,6 +123,7 @@ class AddfoodState extends State<Addfood> {
                   height: 16,
                 ),
                 TextFormField(
+                  textCapitalization: TextCapitalization.words,
                   controller: foodName,
                   validator: _validateFoodName,
                   decoration: const InputDecoration(
@@ -136,6 +135,7 @@ class AddfoodState extends State<Addfood> {
                   height: 16,
                 ),
                 TextFormField(
+                  textCapitalization: TextCapitalization.words,
                   controller: foodCat,
                   validator: _validateFoodCat,
                   decoration: const InputDecoration(
@@ -158,8 +158,8 @@ class AddfoodState extends State<Addfood> {
                   children: [
                     OutlinedButton(
                       style: OutlinedButton.styleFrom(
-                      backgroundColor:  Colors.cyan,
-                      side: BorderSide(color: Colors.deepPurple)
+                      backgroundColor:  Colors.indigo.shade200,
+                      side: const BorderSide(color: Colors.deepPurple)
                       ),
                       onPressed: _takePicture,
                       child: const Text('Take Picture'),
@@ -167,8 +167,8 @@ class AddfoodState extends State<Addfood> {
                     const SizedBox(width: 16),
                     OutlinedButton(
                       style: OutlinedButton.styleFrom(
-                      backgroundColor: Colors.deepPurple,
-                      side: BorderSide(color: Colors.cyan)
+                      backgroundColor: Colors.teal.shade200,
+                      side: const BorderSide(color: Colors.cyan)
                       ),
                       onPressed: _selectPicture,
                       child: const Text('Select Picture'),
@@ -189,8 +189,8 @@ class AddfoodState extends State<Addfood> {
                     width: double.infinity,
                     child: OutlinedButton(
                        style: OutlinedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 0, 149, 5),
-                      side: BorderSide(color: Colors.amber)
+                      backgroundColor: const Color.fromARGB(255, 77, 237, 83),
+                      side: const BorderSide(color: Colors.amber)
                       ),
                       onPressed: isProcessing.value ? null : uploadPicture,
                       child: isProcessing.value

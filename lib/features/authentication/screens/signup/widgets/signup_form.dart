@@ -83,7 +83,7 @@ class TSignUpForm extends StatelessWidget {
                 child: ElevatedButton(
                    style: OutlinedButton.styleFrom(
                       backgroundColor: Colors.green,
-                      side: BorderSide(color: Colors.amber)
+                      side: const BorderSide(color: Colors.amber)
                       ),
                   onPressed: () async {
                     if (controller.isProcessing) return;

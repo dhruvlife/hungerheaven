@@ -2,17 +2,17 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:vision/features/authentication/screens/login/login.dart';
 
-class onBoardingController extends GetxController {
-  static onBoardingController get instance => Get.find();
+class OnBoardingController extends GetxController {
+  static OnBoardingController get instance => Get.find();
 
   final pageController = PageController();
   Rx<int> currentPageIndex = 0.obs;
 
-  void updatePageIndicator(Index) => currentPageIndex.value = Index;
+  void updatePageIndicator(index) => currentPageIndex.value = index;
 
-  void dotNavigationClick(Index) {
-    currentPageIndex.value = Index;
-    pageController.jumpTo(Index);
+  void dotNavigationClick(index) {
+    currentPageIndex.value = index;
+    pageController.jumpTo(index);
   }
 
   void nextPage() {

@@ -184,7 +184,7 @@ class VerifyEmailScreenState extends State<VerifyEmailScreen> {
                 child: ElevatedButton(
                    style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.green,
-                      side: BorderSide(color: Colors.amber)
+                      side: const BorderSide(color: Colors.amber)
                       ),
                   onPressed: (isLoading && isOtpVerified)
                       ? null

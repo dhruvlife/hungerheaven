@@ -91,7 +91,7 @@ class SplashScreenState extends State<SplashScreen>
             Get.to(() => const LoginScreen());
           }
         } else {
-          Get.offAll(() => const onBoardingScreen());
+          Get.offAll(() => const OnBoardingScreen());
         }
       },
     );

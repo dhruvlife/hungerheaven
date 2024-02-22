@@ -88,15 +88,16 @@ class TLoginForm extends StatelessWidget {
                               );
                             }
                           },
-                    style: OutlinedButton.styleFrom(
+                    style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.green,
-                        side: BorderSide(color: Colors.amber)),
-                    child: const Text('Submit',style: TextStyle(color: Colors.white),),
+                        side: const BorderSide(color: Colors.amber)),
+                    child: controller.isLoading.value
+                        ? const CircularProgressIndicator()
+                        : const Text('Submit'),
                   ),
                 ),
               ),
               const SizedBox(height: TSizes.spaceBtwSections),
-              if (controller.isLoading.isTrue) const CircularProgressIndicator()
             ],
           ),
         );
@@ -147,6 +148,20 @@ class TSignInController extends GetxController {
       if (userQuery.docs.isNotEmpty) {
         final user = userQuery.docs.first.data();
         final userId = userQuery.docs.first.id;
+
+        // Find the corresponding rest_details document
+        final restDetailsQuery = await FirebaseFirestore.instance
+            .collection("rest_details")
+            .where("ownerId", isEqualTo: userId)
+            .get();
+
+        String? restaurantId;
+        if (restDetailsQuery.docs.isNotEmpty) {
+          // Found rest_details document, get the restaurantId
+          restaurantId = restDetailsQuery.docs.first.id;
+        }
+
+        // Save user details and restaurantId
         sharedPref.write('isLogin', true);
         sharedPref.write(SplashScreenState.keylogin, true);
         sharedPref.write("userId", userId);
@@ -157,8 +172,10 @@ class TSignInController extends GetxController {
         sharedPref.write('restaurantAdded', user["isRestaurantAdded"]);
         sharedPref.write(
             SplashScreenState.isRestaurantAdded, user["isRestaurantAdded"]);
+        sharedPref.write("restaurantId", restaurantId); // Save the restaurantId
         Fluttertoast.showToast(msg: "Login Success");
         await sharedPref.save();
+
         if (sharedPref.read("restaurantAdded") == true ||
             sharedPref.read(SplashScreenState.isRestaurantAdded) == true) {
           Get.offAll(() => const NavigationMenu());

@@ -9,11 +9,11 @@ import 'package:vision/utils/constants/image_strings.dart';
 import 'package:vision/utils/constants/text_strings.dart';
 
 
-class onBoardingScreen extends StatelessWidget {
-  const onBoardingScreen({super.key});
+class OnBoardingScreen extends StatelessWidget {
+  const OnBoardingScreen({super.key});
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(onBoardingController());
+    final controller = Get.put(OnBoardingController());
 
     return Scaffold(
       body: Stack(

@@ -1,12 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:vision/features/authentication/screens/login/login.dart';
 import 'package:vision/features/authentication/screens/logout/logout_screen.dart';
 import 'package:vision/utils/constants/sizes.dart';
 
@@ -43,31 +41,18 @@ class Profile extends StatelessWidget {
       }
     }
 
-    // Future<void> _signOut() async {
-    //   FirebaseAuth.instance.signOut();
-    //   var sharedPref = GetStorage();
-    //   await sharedPref.initStorage;
-    //   sharedPref.erase();
-    //   Fluttertoast.showToast(msg: "Logout Successfully!");
-    //   Get.offAll(() => LoginScreen());
-    // }
-
     void updateUserInfo(String userId) {
-      // Define the updated data
       Map<String, dynamic> updatedData = {
         "fullname": name.text,
         "email": email.text,
         "phone": phone.text,
-        // Add other fields as needed
       };
-
-      // Call the function to update the user data
       updateUserData(userId, updatedData);
     }
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Profile"),
+        title: const Text("Profile"),
         centerTitle: true,
       ),
       body: Padding(
@@ -122,7 +107,7 @@ class Profile extends StatelessWidget {
                     child: ElevatedButton(
                        style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.green,
-                      side: BorderSide(color: Colors.greenAccent)
+                      side: const BorderSide(color: Colors.greenAccent)
                       ),
                       onPressed: () {
                         updateUserInfo(userId);
@@ -137,13 +122,13 @@ class Profile extends StatelessWidget {
                     width: double.infinity,
                     child: OutlinedButton(
                       onPressed: () {
-                        Get.offAll(()=>LogoutScreen());
+                        Get.offAll(()=>const LogoutScreen());
                       },
                      style: OutlinedButton.styleFrom(
                       backgroundColor: Colors.redAccent,
-                      side: BorderSide(color: Colors.amber)
+                      side: const BorderSide(color: Colors.amber)
                       ),
-                      child: Text(
+                      child: const Text(
                         "Logout",
                       ),
                     ),

@@ -77,39 +77,77 @@ class OnGoingOrderScreen extends StatelessWidget {
         String itemCat = documents[index]['foodCategory'];
         String orderStatus = documents[index]['status'];
 
-        return Card(
-          elevation: 12,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
-          ),
-          color: Colors.black,
-          child: Column(
-            children: [
-              ClipRRect(
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(15)
-                  
-                ),
-                child: Image.network(
-                  imageLink,width: Get.width*0.95,
-                ),
-              ),
-              ListTile(
-                title: Text(
-                  itemName.capitalize!,
-                  style: const TextStyle(
-                    color: Colors.white,
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Card(
+            elevation: 12,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+            color: Colors.black,
+            child: Column(
+              children: [
+                // ClipRRect(
+                //   borderRadius: const BorderRadius.all(Radius.circular(15)),
+                //   child: Image.network(
+                //     imageLink,
+                //     width: Get.width * 0.95,
+                //   ),
+                // ),
+                ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(15)),
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      SizedBox(
+                        width: Get.width * 0.95,
+                        height: Get.width * 0.6, // Adjust the height as needed
+                        child: Image.network(
+                          imageLink,
+                          fit: BoxFit.cover,
+                          loadingBuilder: (context, child, loadingProgress) {
+                            if (loadingProgress == null) {
+                              return child;
+                            }
+                            return Center(
+                              child: CircularProgressIndicator(
+                                value: loadingProgress.expectedTotalBytes !=
+                                        null
+                                    ? loadingProgress.cumulativeBytesLoaded /
+                                        loadingProgress.expectedTotalBytes!
+                                    : null,
+                              ),
+                            );
+                          },
+                          errorBuilder: (context, error, stackTrace) {
+                            return const Icon(Icons.error);
+                          },
+                        ),
+                      ),
+                      if (imageLink
+                          .isEmpty) // Show placeholder if image link is empty
+                        const Icon(Icons.image, size: 40),
+                    ],
                   ),
                 ),
-                trailing: Text('Status: ${orderStatus.toUpperCase()}'),
-                subtitle: Text(
-                  itemCat.capitalize!,
-                  style: const TextStyle(
-                    color: Colors.grey,
+
+                ListTile(
+                  title: Text(
+                    itemName.capitalize!,
+                    style: const TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  trailing: Text('Status: ${orderStatus.toUpperCase()}'),
+                  subtitle: Text(
+                    itemCat.capitalize!,
+                    style: const TextStyle(
+                      color: Colors.grey,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },
