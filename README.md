@@ -52,14 +52,14 @@
 
 ## `Local Implementation`
 - Ensure that you have Flutter installed on your machine.
-- Intital step is to   Clone the Repo and install dependencies
+- Intital step is to Clone the Repo and install dependencies
  ```
-https://github.com/dhruvlife/hungerheaven.git
+git clone https://github.com/dhruvlife/hungerheaven.git
  ```
+- Chnage the directory to run below commands
  ```
 cd hungerheaven
  ```
-
 - Run the following command to install dependencies: 
 ```
 flutter pub get
@@ -92,18 +92,49 @@ flutter run
 
 ## `Screenshots and Video`
 
+| ![Login Screen](https://raw.githubusercontent.com/dhruvlife/hungerheaven/master/assets/app_images/delivery_login.jpeg) | ![SignUp Screen](https://raw.githubusercontent.com/dhruvlife/hungerheaven/master/assets/app_images/partner_signup.jpeg) |
+|:---:|:---:|
+| Login Screen | SignUp Screen |
 
-## 💥 `How to Contribute to Hunger-Heaven?`
+| ![Ongoing Food Order](https://raw.githubusercontent.com/dhruvlife/hungerheaven/master/assets/app_images/partner_home_ongoing.jpeg) | ![Assigned Food Screen](https://raw.githubusercontent.com/dhruvlife/hungerheaven/master/assets/app_images/partner_home_assign.jpeg) |
+|:---:|:---:|
+| Ongoing Food Order | Assigned Food Screen |
 
-- Take a look at the Existing [Issues](https://github.com/dhruvlife/hungerheaven/issues) or create your own Issues!
-- Wait for the Issue to be assigned to you.
-- Fork the repository
-<!-- >click on the uppermost button <img src="https://github.com/vxsourcerer/hungerheaven/assets/123609564/fbf14441-5030-4076-b00a-1781ccbe5e5" width=50>
-- Clone your forked copy of the project. -->
-```
-git clone https://github.com/dhruvlife/hungerheaven.git
+| ![Delivered Food Order](https://raw.githubusercontent.com/dhruvlife/hungerheaven/master/assets/app_images/partner_home_delivered.jpeg) | ![Add Food Screen](https://raw.githubusercontent.com/dhruvlife/hungerheaven/master/assets/app_images/partner_add_food.jpeg) |
+|:---:|:---:|
+| Delivered Food Order | Add Food Screen |
 
-```
+| ![Profile Screen](https://raw.githubusercontent.com/dhruvlife/hungerheaven/master/assets/app_images/partner_profile.jpeg) | |
+|:---:|:---:|
+| Profile Screen | |
+
+## How to Contribute
+💥 **How to Contribute to Hunger-Heaven?**
+
+1. Take a look at the existing issues or create your own issues!
+2. Wait for the issue to be assigned to you.
+3. Fork the repository: [Hunger-Heaven Repository](https://github.com/dhruvlife/hungerheaven)
+4. Clone the repository to your local machine using the following command:
+    ```bash
+    git clone https://github.com/dhruvlife/hungerheaven.git
+    ```
+5. Create a new branch for your contributions:
+    ```bash
+    git checkout -b feature/your-feature-name
+    ```
+6. Make your changes and commit them:
+    ```bash
+    git add .
+    git commit -m "Add your meaningful commit message here"
+    ```
+7. Push your changes to your fork:
+    ```bash
+    git push origin feature/your-feature-name
+    ```
+8. Create a Pull Request (PR) from your fork to the `main` branch of the original repository.
+9. Wait for your PR to be reviewed and merged.
+
+Thank you for contributing to Hunger-Heaven! 🌟
 
 ## `Builders`
 
