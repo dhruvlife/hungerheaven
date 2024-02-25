@@ -12,7 +12,7 @@ class LogoutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<void>(
-      future: clearAllData(),
+      future: clearAllData{},
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Scaffold(
@@ -47,7 +47,7 @@ class LogoutScreen extends StatelessWidget {
     final storage = GetStorage();
     await storage.erase();
     Fluttertoast.showToast(msg: "Logout Successful!");
-    await Future.delayed(const Duration(seconds: 4)); // Wait for 2 seconds
+    await Future.delayed(const Duration(seconds: 5)); // Wait for 2 seconds
     Get.offAll(() => const LoginScreen());
   }
 }

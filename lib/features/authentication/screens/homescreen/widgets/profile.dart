@@ -6,6 +6,7 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:vision/features/authentication/screens/logout/logout_screen.dart';
+import 'package:vision/myuihelper.dart';
 import 'package:vision/utils/constants/sizes.dart';
 
 class Profile extends StatelessWidget {
@@ -118,11 +119,16 @@ class Profile extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
+                  
+
+                  
+
+
                   SizedBox(
                     width: double.infinity,
                     child: OutlinedButton(
                       onPressed: () {
-                        Get.offAll(()=>const LogoutScreen());
+                        DUI.CustomAlertBox(context, "Logout proccessing");
                       },
                      style: OutlinedButton.styleFrom(
                       backgroundColor: Colors.redAccent,

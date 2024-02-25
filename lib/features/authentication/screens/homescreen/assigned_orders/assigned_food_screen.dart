@@ -5,10 +5,10 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:shimmer/shimmer.dart';
 
-class DeliveredFoodScreen extends StatelessWidget {
+class AssignedFoodScreen extends StatelessWidget {
   final String restaurantId;
 
-  const DeliveredFoodScreen({super.key, required this.restaurantId});
+  const AssignedFoodScreen({super.key, required this.restaurantId});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class DeliveredFoodScreen extends StatelessWidget {
         stream: FirebaseFirestore.instance
             .collection('food_details')
             .where('restaurantId', isEqualTo: restaurantId)
-            .where('status', isEqualTo: 'delivered')
+            .where('status', isEqualTo: 'assigned')
             .snapshots(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -29,7 +29,7 @@ class DeliveredFoodScreen extends StatelessWidget {
             );
           } else if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
             return const Center(
-              child: Text('No delivered orders found.'),
+              child: Text('No assigned orders found.'),
             );
           } else {
             // Data is loaded, build the UI
