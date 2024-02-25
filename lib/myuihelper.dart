@@ -65,10 +65,13 @@ class DUI {
                   onPressed: () {
                     Get.back();
                   },
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.green
+                  ),
                   child: const Text(
                     'Cancel',
                     style: TextStyle(
-                      color: Color.fromARGB(255, 0, 140, 255),
+                      color: Colors.white,
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -77,10 +80,13 @@ class DUI {
                   onPressed: () {
                     Get.offAll(()=>const LogoutScreen());
                   },
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.red
+                  ),
                   child: const Text(
                     'Confirm',
                     style: TextStyle(
-                      color: Color.fromARGB(255, 0, 140, 255),
+                      color: Colors.white,
                     ),
                     textAlign: TextAlign.center,
                   ),

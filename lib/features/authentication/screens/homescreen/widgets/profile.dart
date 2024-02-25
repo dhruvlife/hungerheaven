@@ -99,17 +99,16 @@ class Profile extends StatelessWidget {
                       prefixIcon: Icon(Icons.phone_android_rounded),
                       labelText: 'Phone Number',
                     ),
-                  ), 
+                  ),
                   const SizedBox(
                     height: TSizes.spaceBtwSections * 2,
                   ),
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                       style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.green,
-                      side: const BorderSide(color: Colors.greenAccent)
-                      ),
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.green,
+                          side: const BorderSide(color: Colors.greenAccent)),
                       onPressed: () {
                         updateUserInfo(userId);
                       },
@@ -119,21 +118,15 @@ class Profile extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  
-
-                  
-
-
                   SizedBox(
                     width: double.infinity,
                     child: OutlinedButton(
                       onPressed: () {
-                        DUI.CustomAlertBox(context, "Logout proccessing");
+                        DUI.CustomAlertBox(context, "Proceed to Logout ?");
                       },
-                     style: OutlinedButton.styleFrom(
-                      backgroundColor: Colors.redAccent,
-                      side: const BorderSide(color: Colors.amber)
-                      ),
+                      style: OutlinedButton.styleFrom(
+                          backgroundColor: Colors.redAccent,
+                          side: const BorderSide(color: Colors.amber)),
                       child: const Text(
                         "Logout",
                       ),
