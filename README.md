@@ -92,6 +92,10 @@ flutter run
 
 ## `Screenshots and Video`
 
+<div align=center">
+  <p align="center"><a href="https://youtu.be/p_jyNBu7Plw">Watch Project Demo Video</a></p>
+</div>
+
 | ![Login Screen](https://raw.githubusercontent.com/dhruvlife/hungerheaven/master/assets/app_images/delivery_login.jpeg) | ![SignUp Screen](https://raw.githubusercontent.com/dhruvlife/hungerheaven/master/assets/app_images/partner_signup.jpeg) |
 |:---:|:---:|
 | Login Screen | SignUp Screen |
