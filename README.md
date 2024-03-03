@@ -26,13 +26,13 @@
 # 🧭 `Table of contents`
 
 - [Hunger Heaven](#-Hunger-Heaven)
-- [Table of contents🧭 ](#-table-of-contents)
-- [Introduction🚀](#Introduction)
-- [Local Implementation](#-Local-Implementation-)
-- [Technologies Used📫](#-Technologies-Used-)
-- [Features](#Features)
-- [Hunger Heaven in Action](#Screenshots-and-Video)
-- [Made By](#Builders)
+- [Table of contents🧭 ](#-Table-of-contents)
+- [Introduction🚀](#-Introduction)
+- [Local Implementation](#-Local-Implementation)
+- [Technologies Used📫](#-Technologies-Used)
+- [Features](#-Features)
+- [Hunger Heaven in Action](#-Screenshots-and-Video)
+- [Made By](#-Builders)
 
 
 
